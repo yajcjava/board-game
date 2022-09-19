@@ -3,12 +3,10 @@
  */
 package tme.yajc.app
 
-import tme.yajc.utilities.StringUtils
-
-import org.apache.commons.text.WordUtils
+import tme.yajc.board.tictactoe.BoardGenerator
 
 fun main() {
-    val tokens = StringUtils.split(MessageUtils.getMessage())
-    val result = StringUtils.join(tokens)
-    println(WordUtils.capitalize(result))
+    val board = BoardGenerator.generate()
+    val display = TicTacConsoleDisplay
+    display.show(board)
 }
