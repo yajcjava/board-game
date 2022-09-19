@@ -6,7 +6,7 @@ import tme.yajc.board.BoardItem
 enum class Color(val str: String) {
     RED("\u001b[31m"),
     BLUE("\u001b[34m"),
-    GREEN("\u001b[32m");
+    GREY("\u001b[37m");
 }
 
 object ConsoleDisplay : Display {

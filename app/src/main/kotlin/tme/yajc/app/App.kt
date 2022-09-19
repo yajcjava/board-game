@@ -37,6 +37,6 @@ fun CheckersItem.toLetter(): String {
 }
 
 fun CheckersItem.toColor() = when (this) {
-    is DarkCheckersItem -> Color.BLUE
-    is LightCheckersItem -> Color.GREEN
+    is DarkCheckersItem -> Color.GREY
+    is LightCheckersItem -> Color.RED
 }

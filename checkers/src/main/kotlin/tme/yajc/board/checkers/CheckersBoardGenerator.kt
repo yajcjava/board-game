@@ -10,9 +10,14 @@ fun generateCheckers(
 }
 
 fun randomItem(): CheckersItem {
-    return if (Random.nextBoolean()) { // todo is this random thread-local random?
-        LightCheckersItem(CheckersType.MAN)
+    val type = if (Random.nextBoolean()) {
+        CheckersType.MAN
     } else {
-        DarkCheckersItem(CheckersType.MAN)
+        CheckersType.KING
+    }
+    return if (Random.nextBoolean()) { // todo is this random thread-local random?
+        LightCheckersItem(type)
+    } else {
+        DarkCheckersItem(type)
     }
 }
