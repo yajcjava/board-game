@@ -3,10 +3,40 @@
  */
 package tme.yajc.app
 
-import tme.yajc.board.tictactoe.BoardGenerator
+import tme.yajc.board.checkers.*
+import tme.yajc.board.tictactoe.TicTacCross
+import tme.yajc.board.tictactoe.TicTacItem
+import tme.yajc.board.tictactoe.TicTacZero
 
 fun main() {
-    val board = BoardGenerator.generate()
-    val display = TicTacConsoleDisplay
-    display.show(board)
+    val board = generateCheckers()
+//    val board = generateTicTac()
+    val display = ConsoleDisplay
+    display.show(board,
+        drawItem = { it.toLetter() },
+        color = { it.toColor() }
+    )
+}
+
+fun TicTacItem.toLetter() = when (this) {
+    TicTacCross -> "x"
+    TicTacZero -> "o"
+}
+
+fun TicTacItem.toColor() = when (this) {
+    TicTacCross -> Color.RED
+    TicTacZero -> Color.BLUE
+}
+
+fun CheckersItem.toLetter(): String {
+    val letter = when (this) {
+        is DarkCheckersItem -> "d"
+        is LightCheckersItem -> "l"
+    }
+    return if (this.type == CheckersType.MAN) letter else letter.uppercase()
+}
+
+fun CheckersItem.toColor() = when (this) {
+    is DarkCheckersItem -> Color.BLUE
+    is LightCheckersItem -> Color.GREEN
 }

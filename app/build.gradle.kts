@@ -8,6 +8,7 @@ plugins {
 
 dependencies {
     implementation(project(":tic-tac-toe"))
+    implementation(project(":checkers"))
 }
 
 application {

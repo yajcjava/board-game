@@ -11,7 +11,7 @@ class TicTacToeBoardTest {
     @TestFactory
     fun testWholeBoardContains() = listOf(TicTacZero, TicTacCross).map { testItem ->
         DynamicTest.dynamicTest(testItem.description) {
-            val board = BoardGenerator.generate { testItem }
+            val board = generateTicTac { testItem }
             board.forEachItem { _, boardItem ->
                 assertEquals(testItem, boardItem)
             }
