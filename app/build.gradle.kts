@@ -15,3 +15,7 @@ application {
     // Define the main class for the application.
     mainClass.set("tme.yajc.app.AppKt")
 }
+
+tasks.named<JavaExec>("run") {
+    standardInput = System.`in`
+}

@@ -4,18 +4,32 @@
 package tme.yajc.app
 
 import tme.yajc.board.checkers.*
-import tme.yajc.board.tictactoe.TicTacCross
-import tme.yajc.board.tictactoe.TicTacItem
-import tme.yajc.board.tictactoe.TicTacZero
+import tme.yajc.board.tictactoe.*
+import tme.yajc.console.ClearScreen
+import tme.yajc.game.engine.GameEngine
+import tme.yajc.game.engine.PlayerStepManager
+import tme.yajc.game.engine.PlayerStepProvider
 
 fun main() {
-    val board = generateCheckers()
-//    val board = generateTicTac()
+    ClearScreen.clearScreen()
+//    val board = generateCheckers()
+    val board = TicTacToeBoard() //generateTicTac()
     val display = ConsoleDisplay
-    display.show(board,
-        drawItem = { it.toLetter() },
-        color = { it.toColor() }
-    )
+
+    val gameEngine = GameEngine(
+        board,
+        2,
+        PlayerStepProvider()
+    ) {
+        if (it.id == "1") TicTacCross else TicTacZero
+    }
+    while(!gameEngine.isFinished()) {
+        display.show(board,
+            drawItem = { it.toLetter() },
+            color = { it.toColor() }
+        )
+        gameEngine.gameStep()
+    }
 }
 
 fun TicTacItem.toLetter() = when (this) {

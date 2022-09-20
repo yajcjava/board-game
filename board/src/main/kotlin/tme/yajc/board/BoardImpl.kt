@@ -1,8 +1,7 @@
 package tme.yajc.board
 
 
-
-class BoardImpl<T: BoardItem>(
+class BoardImpl<T : BoardItem>(
     override val width: Int,
     override val height: Int
 ) : Board<T> {
