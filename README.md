@@ -7,4 +7,11 @@
 1. step verifier
 1. users support
 1. model of a board/game to serialize (json?)
-1. 
+
+## UML
+```mermaid
+graph TD
+A(Create a board with initial state) --> B(create users)
+B --> C(choose the first player to make a step)
+C --> D(Validate step and perform if valid)
+```
